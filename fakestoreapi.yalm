@@ -1,0 +1,50 @@
+YALM
+openapi: 3.0.0
+info:
+  title: FakeStoreAPI
+  description: fakestoreapi.com tests + api specification
+  version: 1.0.0
+servers:
+  - url: http://api.example.com/v1
+    description: Production server
+components:
+  schemas: {}
+paths:
+  /products/{productId}:
+    get:
+      summary: Get single product by ID
+      parameters:
+        - name: productId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  title:
+                    type: string
+                  price:
+                    type: number
+                  description:
+                    type: string
+                  category:
+                    type: string
+                  image:
+                    type: string
+                  rating:
+                    type: object
+                    properties:
+                      rate:
+                        type: number
+                      count:
+                        type: integer
+        '404':
+          description: Product not found
